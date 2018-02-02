@@ -11,4 +11,4 @@ new_words = []
     new_word = #YOUR CODE HERE
     new_words.append(new_word)
 
-print(new_artifacts)
+print(new_words)
