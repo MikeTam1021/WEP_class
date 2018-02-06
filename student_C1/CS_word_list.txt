@@ -18,13 +18,3 @@ data
 bits
 bytes
 binary
-function
-class
-module
-stack
-queue
-graph
-concurrency
-process
-application
-network

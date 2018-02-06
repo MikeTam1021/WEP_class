@@ -1,0 +1,21 @@
+
+>>> item_list = ['first', 'second', 'third', 'fourth']
+
+>>> item_list[0]
+
+>>> item_list[3]
+
+>>> item_list[1:2]
+
+>>> item_list[2] = '3rd'
+
+>>> item_list
+
+>>> len(item_list)
+
+>>> if 'second' in list:
+>>>     print('yes')
+
+>>> list.index('second')
+
+>>> list.append('fifth')

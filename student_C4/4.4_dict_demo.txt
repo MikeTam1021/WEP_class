@@ -1,0 +1,12 @@
+
+>>> colors = {'red': 'rojo', 'pink': 'rosado', 'grey': 'gris', 'white': 'blanco'}
+
+>>> colors['red']
+
+>>> colors['blue'] = 'azul'
+
+>>> colors.keys()
+
+>>> colors.values()
+
+>>> colors.items()
