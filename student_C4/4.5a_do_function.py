@@ -4,7 +4,7 @@ def triangle('<YOUR CODE HERE>'):
     """
     return True if you can make a triangle and False if you cannot
     """
-    if s1 + s2 >= s3 and s2 + s3 >= s1 and s3 + s1 >= s2:
+    if s1 + s2 > s3 and s2 + s3 > s1 and s3 + s1 > s2:
         tri = True
     else:
         tri = False
