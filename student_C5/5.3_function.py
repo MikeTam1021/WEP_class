@@ -10,7 +10,7 @@ def add_two_numbers(x, y):
     z = x + y
     return z
 
-# a function is called by passing arguments and using paranthesis
+# a function is called by passing arguments and using parentheses
 
 add_two_numbers(3, 5)   # this will return 8
 
