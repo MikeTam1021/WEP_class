@@ -4,7 +4,7 @@ import random
 
 def give_feedback(lguess, answer):
     """
-    return XOXO for correct answer and location
+    return X's and O's to give feedback on each guess
     """
     correct = ''
     idx_list = []
@@ -23,20 +23,24 @@ def give_feedback(lguess, answer):
 
 if __name__ == "__main__":
     tries = 10
-    colors = ['G', 'R', 'B', 'W', 'Y', 'O']
+    colors = ['G', 'R', 'B', 'W', 'Y', 'P']
     answer = [random.choice(colors) for _ in range(4)]
-    print("X means right color, right space: O means right color wrong space")
+    print("\nInstructions: Guess the right combination of 4 colors in 10 tries")
+    print("X means right color, right space | O means right color, wrong space")
+    print("Your color choices are Green, Red, Blue, White, Yellow, and Purple\n\n")
     while tries > 0:
-        guess = raw_input("Enter 4 colors from G/R/B/W/Y/O, seperate with a space")
+        guess = raw_input("Enter 4 colors from G/R/B/W/Y/P, seperate with a space: ")
         lguess = guess.split(' ')
         if len(lguess) == 4 and set(lguess).issubset(set(colors)):
             tries = tries - 1
             if lguess == answer:
-                print "you win!!!"
+                print("you win!!!")
                 break
             else:
-                print "answer", answer
                 feedback = give_feedback(lguess, answer[:])
-                print(feedback)
+                print("Guess again: here is your feedback: " + feedback)
+                print(str(tries) + " tries left \n")
+        else:
+            print("Wrong Format, guess again \n")
 
-    print(answer, "******")
+    print("Answer: " + ' '.join(answer))
