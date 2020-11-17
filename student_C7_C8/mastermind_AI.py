@@ -12,6 +12,25 @@ INSTRUCTIONS = """\nInstructions:
                   Your color choices are Green, Red,
                   Blue, White, Yellow, and Purple\n\n"""
 
+def solve_heuristic(all_remaining_colors):
+    """
+    this uses Donald Knuth's heuristic of minimizing the number of 
+    remaining answers to the puzzle. It is a minimax algorithim that
+    looks over future possibilities and then picks the smallest maximum
+    score.
+    
+    https://www.cs.uni.edu/~wallingf/teaching/cs3530/resources/knuth-mastermind.pdf
+    """
+    heuristic_scores = []
+    for guess in all_remaining_colors:
+        seq_counts_after_guess = dict()
+        for maybe_answer in all_remaining_colors:
+            feedback = give_feedback(guess, maybe_answer[:])
+            seq_counts_after_guess.setdefault(feedback, 0)
+            seq_counts_after_guess[feedback] += 1
+        heuristic_scores.append(max(seq_counts_after_guess.values()))
+    return all_remaining_colors[np.argmin(heuristic_scores)]
+            
 def try_all_answers(all_remaining_colors, guess, true_feedback):
     """
     This is for the Artificial Intelligence answering mechanism.
@@ -36,7 +55,6 @@ def give_feedback(lguess, answer):
 
     called by the game for the player to respond with a follow-up guess
     """
-
     correct = ''
     idx_list = []
     for i in range(4):
@@ -64,7 +82,7 @@ if __name__ == "__main__":
                                             repeat=answer_length)))
     print(INSTRUCTIONS)
     while tries > 0:
-        guess = random.choice(all_remaining_colors)
+        guess = solve_heuristic(all_remaining_colors) # random.choice(all_remaining_colors)
         print("This is the guess for the turn: " + str(guess))
         if len(guess) == answer_length and set(guess).issubset(set(colors)):
             tries = tries - 1
